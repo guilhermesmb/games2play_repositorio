@@ -6,23 +6,29 @@ function cadastrar(){
     let pontos = document.querySelector("#pontos").value
     let categoria = document.querySelector("#categoria").value
 
-    console.log(titulo, descricao, pontos, categoria)
+    const tarefa = {
+        titulo: titulo,
+        descricao: descricao,
+        pontos: pontos,
+        categoria: categoria
+    }
 
-    document.querySelector("#tarefas").innerHTML += gerarCard()
-    
+    document.querySelector("#tarefas").innerHTML += gerarCard(tarefa)
+
 }
 
-function gerarCard(){
+function gerarCard(tarefa){
     return `<div class="col">
     <div class="card">
         <div class="card-header">
-            God of War Ragnarök
+            ${tarefa.titulo}
         </div>
         <div class="card-body">
-            <p class="card-text">É god of war meu amigo</p>
+            <p class="card-text">${tarefa.descricao}</p>
             <p>
-                <span class="badge text-bg-warning">Ação / Aventura</span>
+                <span class="badge text-bg-warning">${tarefa.categoria}</span>
             </p>
+            <p>${tarefa.pontos} Pontos de Dificuldade</p>
             <a href="#" class="btn btn-success">
                 <i class="bi bi-check-lg"></i>
             </a>
