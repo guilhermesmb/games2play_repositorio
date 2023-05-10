@@ -29,7 +29,7 @@
                   <li><a class="dropdown-item" href="#">Na Prateleira</a></li>
                   <li><a class="dropdown-item" href="#">Zerados</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Mais um pra conta!</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Mais um pra conta!</a></li>
                 </ul>
               </li>
             </ul>
@@ -42,9 +42,10 @@
     </nav>
     
 
-    <main class="container">
+    <main class="container mt-3">
                 <!-- Button trigger modal -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="bi bi-plus-lg"></i>
         Cadastrar um novo Game
       </button>
 
@@ -67,7 +68,7 @@
                     <input id="descricao" type="text" class="form-control" placeholder="Porque Jogar?" aria-label="porque">
                   </div>
                   <div class="col">
-                    <input id="pontos" type="number" class="form-control" placeholder="Dificuldade" aria-label="dificuldade">
+                    <input id="pontos" type="number" min="0" max="10" class="form-control" placeholder="Dificuldade" aria-label="dificuldade">
                   </div>
                   <div class="col">
                       <select id="categoria" class="form-select" aria-label="Default select example">
@@ -80,7 +81,7 @@
               </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button id="cancelar" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
               <button id="salvar" type="button" class="btn btn-primary">Salvar Game</button>
             </div>
           </div>
