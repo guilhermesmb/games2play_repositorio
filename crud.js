@@ -21,6 +21,9 @@ function cadastrar() {
 
     document.querySelector("#tarefas").innerHTML += gerarCard(tarefa);
 
+    document.querySelector("#titulo").value = "";
+    document.querySelector("#descricao").value = "";
+
     modal.hide();
 }
 
