@@ -1,5 +1,15 @@
 document.querySelector("#salvar").addEventListener("click", cadastrar);
 
+let lista_tarefas = [];
+
+window.addEventListener("load", () => {
+    const tarefas = JSON.parse(localStorage.getItem("lista_tarefa"));
+
+    tarefas.forEach(tarefa => {
+        document.querySelector("#tarefas").innerHTML += gerarCard(tarefa);
+    })
+})
+
 function cadastrar() {
     const modal = bootstrap.Modal.getInstance(document.querySelector("#exampleModal"))
     let titulo = document.querySelector("#titulo").value;
@@ -19,10 +29,14 @@ function cadastrar() {
         return;
     }
 
+    lista_tarefas.push(tarefa);
+
     document.querySelector("#tarefas").innerHTML += gerarCard(tarefa);
 
     document.querySelector("#titulo").value = "";
     document.querySelector("#descricao").value = "";
+
+    localStorage.setItem("lista_tarefa", JSON.stringify(lista_tarefas));
 
     modal.hide();
 }
