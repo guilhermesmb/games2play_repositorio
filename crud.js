@@ -9,8 +9,22 @@ window.addEventListener("load", () => {
 })
 
 document.querySelector("#pendentes").addEventListener("click", () => {
-    lista_tarefas = lista_tarefas.filter(tarefa => tarefa.concluida == false)
+    lista_tarefas = JSON.parse(localStorage.getItem("lista_tarefa")) || [];
+    lista_tarefas = lista_tarefas.filter(tarefa => tarefa.concluida == false) 
     atualizar()
+})
+
+document.querySelector("#concluidas").addEventListener("click", () => {
+    lista_tarefas = JSON.parse(localStorage.getItem("lista_tarefa")) || [];
+    lista_tarefas = lista_tarefas.filter(tarefa => tarefa.concluida == true)
+    atualizar()
+})
+
+document.querySelector("#busca").addEventListener("keyup", () => {
+    const titulo = document.querySelector("#busca").value
+    lista_tarefas = lista_tarefas.filter((tarefa) => tarefa.titulo.includes(titulo))
+
+    atualizar();
 })
 
 function cadastrar() {
@@ -98,4 +112,3 @@ function gerarCard(tarefa) {
             </div> <!-- card -->
         </div> <!-- col -->
     `
-}
